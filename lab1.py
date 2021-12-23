@@ -74,6 +74,8 @@ def optimize(func, sub_grad, init, step_func=lambda k: 1/(2 + k), max_iter=10000
         if np.linalg.norm(points[-1] - points[-2]) < tol and \
            np.linalg.norm(values[-1] - values[-2]) < tol:
             break
+    print("Кількість ітерацій:")
+    print(len(values))
     return points[-1], values[-1]
 
 
@@ -121,7 +123,7 @@ w = 0.5 * np.sqrt(u**2 + v**2)
 u /= w
 v /= w
 ax = fig.add_subplot(1, 2, 2)
-ax.quiver(x1, x2, -u, -v, label='gradient')
+ax.quiver(x1, x2, -u, -v, label='gradient', angles='xy', units='x')
 ax.plot(l1x1, l1x2, colors[0], label='x1 - x2 - 3 = 0')
 ax.plot(l2x1, l2x2, colors[1], label='x1 + 2*x2 + 5 = 0')
 ax.scatter([point[0]], [point[1]], c=colors[2], label='min')
